@@ -33,6 +33,7 @@ const Cart = (props) => {
                 <h3>Name: {element.title}</h3>
                 <img src={element.imageUrl} alt={element.title} />
                 <h4>Quantity: {element.quantity}</h4>
+                <button>Remove Item</button>
             </div>
         })}
     </Modal>

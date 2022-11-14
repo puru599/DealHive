@@ -6,7 +6,6 @@ const ProductItems = (props) => {
   const useCtx = useContext(CartContext);
   const onClickHandler = (e) => {
     e.preventDefault();
-    console.log(props.title);
     useCtx.addItem({
       id: props.id,
       title: props.title,

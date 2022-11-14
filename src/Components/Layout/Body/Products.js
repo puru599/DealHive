@@ -1,46 +1,53 @@
 import React from "react";
 import classes from "./Products.module.css";
+import ProductItems from "./ProductItems";
+
+const productsArr = [
+  {
+    id: "Colors",
+    title: "Colors",
+    price: 100,
+    quanitiy: 1,
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+  },
+  {
+    id: "Black and white Colors",
+    title: "Black and white Colors",
+    price: 50,
+    quanitiy: 1,
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+  },
+  {
+    id: "Yellow and Black Colors",
+    title: "Yellow and Black Colors",
+    price: 70,
+    quanitiy: 1,
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+  },
+  {
+    id: "Blue Color",
+    title: "Blue Color",
+    price: 100,
+    quanitiy: 1,
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+  },
+];
 
 const Products = () => {
-  const productsArr = [
-    {
-      title: "Colors",
-      price: 100,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-    },
-    {
-      title: "Black and white Colors",
-      price: 50,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-    },
-    {
-      title: "Yellow and Black Colors",
-      price: 70,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-    },
-    {
-      title: "Blue Color",
-      price: 100,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
-    },
-  ];
+  const productList = productsArr.map((product) => (
+    <ProductItems
+      id={product.id}
+      key={product.id}
+      title={product.title}
+      price={product.price}
+      imageUrl={product.imageUrl}
+      quantity={product.quanitiy}
+    />
+  ));
 
   return (
-    <div>
-      {productsArr.map((product) => {
-        return (
-          <React.Fragment>
-            <h2>{product.title}</h2>
-            <img src={product.imageUrl} alt="images" className={classes.img} />
-            <h3>Price: {product.price}</h3>
-            <button>Add to cart</button>
-          </React.Fragment>
-        );
-      })}
+    <div className={classes.Products}>
+      <ul>{productList}</ul>
     </div>
   );
 };

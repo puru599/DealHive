@@ -4,8 +4,6 @@
   padding: 0px;
   padding-bottom: 0px;
   padding-bottom: 30px;
-  /* background: #777;
-  color: white; */
   box-sizing: border-box;
   position: relative;
 }
@@ -40,4 +38,9 @@
   background: darkseagreen;
   border-radius: 10px;
   font-size: 40px;
+}
+
+.header button {
+  position: absolute;
+  right: 2%;
 }

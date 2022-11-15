@@ -1,0 +1,14 @@
+.ul {
+    align-items: center;
+}
+
+.ul li{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 15px;
+    border-bottom: 1px solid black;
+}
+
+.h1 {
+    text-align: center;
+}

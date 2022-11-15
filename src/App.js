@@ -5,6 +5,7 @@ import { Route } from "react-router-dom";
 import About from "./Components/Pages/About";
 import StorePage from "./Components/Layout/Body/StorePage";
 import { useState } from "react";
+import HomePage from "./Components/Pages/HomePage";
 
 function App() {
   const [cartState, setCartState] = useState(false);
@@ -20,6 +21,9 @@ function App() {
       </Route>
       <Route path="/store" >
       <StorePage cartState={cartState} cartHandler={cartHandler} />
+      </Route>
+      <Route path="/home">
+        <HomePage />
       </Route>
     </ContextProvider>
   );

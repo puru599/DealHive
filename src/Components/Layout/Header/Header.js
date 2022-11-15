@@ -1,6 +1,7 @@
 import classes from "./Header.module.css";
 import { useContext } from "react";
 import CartContext from "../../Context/cart-context";
+import { NavLink } from "react-router-dom";
 
 const Header = (props) => {
   const useCtx = useContext(CartContext);
@@ -12,13 +13,13 @@ const Header = (props) => {
       <div>
         <ul>
           <li>
-            <a href="a">Home</a>
+            <NavLink to="/home">Home</NavLink>
           </li>
           <li>
-            <a href="b">Store</a>
+            <NavLink to="/store">Store</NavLink>
           </li>
           <li>
-            <a href="c">About</a>
+          <NavLink to="/about">About</NavLink>
           </li>
           <button onClick={props.onClick}>
             <span>Cart-</span>

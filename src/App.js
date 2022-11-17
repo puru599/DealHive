@@ -6,6 +6,7 @@ import About from "./Components/Pages/About";
 import StorePage from "./Components/Layout/Body/StorePage";
 import { useState } from "react";
 import HomePage from "./Components/Pages/HomePage";
+import ContactUs from "./Components/Pages/ContactUs";
 
 function App() {
   const [cartState, setCartState] = useState(false);
@@ -24,6 +25,9 @@ function App() {
       </Route>
       <Route path="/home">
         <HomePage />
+      </Route>
+      <Route path="/contact">
+        <ContactUs />
       </Route>
     </ContextProvider>
   );

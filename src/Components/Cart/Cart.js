@@ -22,10 +22,11 @@ const Cart = (props) => {
               imageUrl={element.imageUrl}
               amount={element.amount}
               onRemove={onRemoveHandler.bind(null, element.id)}
+              key={element.title}
             />
           ))}
         </ul>
-        <h2>Total Amount: { cartCtx.totalAmount }</h2>
+        <h2>Total Amount: {cartCtx.totalAmount}</h2>
       </Modal>
     </React.Fragment>
   );

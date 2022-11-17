@@ -16,7 +16,7 @@ const Header = (props) => {
             <NavLink to="/home">Home</NavLink>
           </li>
           <li>
-            <NavLink to="/store">Store</NavLink>
+            <NavLink to="/">Store</NavLink>
           </li>
           <li>
           <NavLink to="/about">About</NavLink>

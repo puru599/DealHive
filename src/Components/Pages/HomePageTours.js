@@ -1,4 +1,4 @@
-import classes from './HomePageTours.module.css'
+import classes from "./HomePageTours.module.css";
 
 const HomePageTours = () => {
   const Albums = [
@@ -37,7 +37,7 @@ const HomePageTours = () => {
     <ul className={classes.ul}>
       {Albums.map((item) => {
         return (
-          <li>
+          <li key={item.place}>
             <span>{item.date}</span>
             <span>{item.place}</span>
             <span>{item.location}</span>

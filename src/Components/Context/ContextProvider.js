@@ -1,9 +1,13 @@
-import { React, useReducer } from "react";
+import { React, useReducer, useState } from "react";
 import CartContext from "./cart-context";
 
 const defaultCartState = {
   items: [],
   totalAmount: 0,
+  token: "",
+  isLoggedIn: false,
+  login: (token) => {},
+  logout: () => {},
 };
 
 const cartReducer = (state, action) => {
@@ -69,12 +73,25 @@ const ContextProvider = (props) => {
   const removeItemFromCart = (id) => {
     dispatchCartAction({ type: "REMOVE", id: id });
   };
+  const loginState = localStorage.getItem("loginKey");
+  const [token, setToken] = useState(loginState);
+  const isLoggedInHandler = !!token;
+  const loginHandler = (token) => {
+    setToken(token);
+  };
+  const logoutHandler = () => {
+    setToken(null);
+  };
 
   const cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
     addItem: addItemToCart,
     removeItem: removeItemFromCart,
+    token: token,
+    isLoggedIn: isLoggedInHandler,
+    login: loginHandler,
+    logout: logoutHandler,
   };
 
   return (

@@ -1,13 +1,20 @@
 import classes from "./Header.module.css";
 import { useContext } from "react";
 import CartContext from "../../Context/cart-context";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 const Header = (props) => {
   const useCtx = useContext(CartContext);
   const numberofCartItems = useCtx.items.reduce((curNum, item) => {
     return curNum + item.amount;
   }, 0);
+  const loginStatus = useCtx.isLoggedIn;
+  const history = useHistory("");
+  const logoutHandler = () => {
+    useCtx.logout();
+    localStorage.removeItem("loginKey");
+    history.replace("/login");
+  };
   return (
     <header className={classes.header}>
       <div>
@@ -15,14 +22,25 @@ const Header = (props) => {
           <li>
             <NavLink to="/home">Home</NavLink>
           </li>
+          {loginStatus && (
+            <li>
+              <NavLink to="/store">Store</NavLink>
+            </li>
+          )}
           <li>
-            <NavLink to="/">Store</NavLink>
+            <NavLink to="/about">About</NavLink>
           </li>
           <li>
-          <NavLink to="/about">About</NavLink>
+            {loginStatus ? (
+              <NavLink to="/logout" onClick={logoutHandler}>
+                logout
+              </NavLink>
+            ) : (
+              <NavLink to="/login">login</NavLink>
+            )}
           </li>
           <li>
-          <NavLink to="/contact">Contact Us</NavLink>
+            <NavLink to="/contact">Contact Us</NavLink>
           </li>
           <button onClick={props.onClick}>
             <span>Cart-</span>

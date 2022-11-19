@@ -10,8 +10,6 @@ const LoginPage = () => {
   const cartCtx = useContext(CartContext);
   const loginSubmitHandler = async (event) => {
     event.preventDefault();
-    console.log(emailInput.current.value);
-    console.log(passwordInput.current.value);
     const response = await fetch(
       "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBcOYKpZHbPe7QBWAhibHizoi6qcffUYZI",
       {
@@ -28,7 +26,9 @@ const LoginPage = () => {
     );
     if (response.ok) {
       const data = await response.json();
-      cartCtx.login(data.idToken);
+      const regex = /[.@]/g;
+      const mailId = data.email.replace(regex, "");
+      cartCtx.login(data.idToken, mailId);
       history.replace("/store");
     } else {
       const data = await response.json();

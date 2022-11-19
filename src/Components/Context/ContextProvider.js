@@ -8,6 +8,7 @@ const defaultCartState = {
   isLoggedIn: false,
   login: (token) => {},
   logout: () => {},
+  email: null,
 };
 
 const cartReducer = (state, action) => {
@@ -74,15 +75,21 @@ const ContextProvider = (props) => {
     dispatchCartAction({ type: "REMOVE", id: id });
   };
   const loginState = localStorage.getItem("loginKey");
+  const emailState = localStorage.getItem("email");
   const [token, setToken] = useState(loginState);
+  const [email, setEmail] = useState(emailState);
   const isLoggedInHandler = !!token;
-  const loginHandler = (token) => {
+  const loginHandler = (token, email) => {
     setToken(token);
+    setEmail(email);
     localStorage.setItem("loginKey", token);
+    localStorage.setItem("email", email);
   };
   const logoutHandler = () => {
     setToken(null);
+    setEmail(null);
     localStorage.removeItem("loginKey");
+    localStorage.removeItem("email");
   };
 
   const cartContext = {
@@ -94,6 +101,7 @@ const ContextProvider = (props) => {
     isLoggedIn: isLoggedInHandler,
     login: loginHandler,
     logout: logoutHandler,
+    email: email,
   };
 
   return (

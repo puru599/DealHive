@@ -1,6 +1,6 @@
 import "./App.css";
+import React from "react";
 import Header from "./Components/Layout/Header/Header";
-import ContextProvider from "./Components/Context/ContextProvider";
 import { Redirect, Route, Switch } from "react-router-dom";
 import About from "./Components/Pages/About";
 import StorePage from "./Components/Layout/Body/StorePage";
@@ -18,19 +18,18 @@ function App() {
   };
   const useCtx = useContext(CartContext);
   const loggedIn = useCtx.isLoggedIn;
-
   return (
-    <ContextProvider>
+    <React.Fragment>
       <Header onClick={cartHandler}></Header>
       <Switch>
         <Route path="/about">
           <About />
         </Route>
-
-        <Route path="/store" exact>
-          <StorePage cartState={cartState} cartHandler={cartHandler} />
-        </Route>
-
+        {loggedIn && (
+          <Route path="/store">
+            <StorePage cartState={cartState} cartHandler={cartHandler} />
+          </Route>
+        )}
         <Route path="/home">
           <HomePage />
         </Route>
@@ -40,14 +39,16 @@ function App() {
         <Route path="/login">
           <LoginPage />
         </Route>
-        <Route path="/store:productId">
-          <ProductsPage />
-        </Route>
+        {loggedIn && (
+          <Route path="/:productId">
+            <ProductsPage />
+          </Route>
+        )}
         <Route path="*">
-          <Redirect to="/home" />
+          <Redirect to="/login" />
         </Route>
       </Switch>
-    </ContextProvider>
+    </React.Fragment>
   );
 }
 

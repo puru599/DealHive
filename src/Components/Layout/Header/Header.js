@@ -12,7 +12,6 @@ const Header = (props) => {
   const history = useHistory("");
   const logoutHandler = () => {
     useCtx.logout();
-    localStorage.removeItem("loginKey");
     history.replace("/login");
   };
   return (
@@ -42,10 +41,12 @@ const Header = (props) => {
           <li>
             <NavLink to="/contact">Contact Us</NavLink>
           </li>
-          <button onClick={props.onClick}>
-            <span>Cart-</span>
-            <span>{numberofCartItems}</span>
-          </button>
+          {loginStatus && (
+            <button onClick={props.onClick}>
+              <span>Cart-</span>
+              <span>{numberofCartItems}</span>
+            </button>
+          )}
         </ul>
       </div>
       <h1>The Generics</h1>

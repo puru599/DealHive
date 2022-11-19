@@ -4,7 +4,7 @@ import CartContext from "./cart-context";
 const defaultCartState = {
   items: [],
   totalAmount: 0,
-  token: "",
+  token: null,
   isLoggedIn: false,
   login: (token) => {},
   logout: () => {},
@@ -78,9 +78,11 @@ const ContextProvider = (props) => {
   const isLoggedInHandler = !!token;
   const loginHandler = (token) => {
     setToken(token);
+    localStorage.setItem("loginKey", token);
   };
   const logoutHandler = () => {
     setToken(null);
+    localStorage.removeItem("loginKey");
   };
 
   const cartContext = {

@@ -30,7 +30,6 @@ const LoginPage = () => {
       const data = await response.json();
       cartCtx.login(data.idToken);
       history.replace("/store");
-      localStorage.setItem("loginKey", data.idToken);
     } else {
       const data = await response.json();
       alert(data.error.message);

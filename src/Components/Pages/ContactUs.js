@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import classes from "./ContactUs.module.css";
 
 const ContactUs = () => {
   const nameValue = useRef("");
@@ -10,7 +11,7 @@ const ContactUs = () => {
     const userDetails = {
       name: nameValue.current.value,
       phoneNumber: phoneValue.current.value,
-      email: emailValue.current.value,
+      email: emailValue.current.value
     };
 
     const response = await fetch(
@@ -19,8 +20,8 @@ const ContactUs = () => {
         method: "POST",
         body: JSON.stringify(userDetails),
         headers: {
-          "Content-Type": "application/json",
-        },
+          "Content-Type": "application/json"
+        }
       }
     );
     const data = await response.json();
@@ -28,7 +29,8 @@ const ContactUs = () => {
   }
 
   return (
-    <form onSubmit={onSubmitHandler}>
+    <form onSubmit={onSubmitHandler} className={classes.Contact}>
+      <h3>Contact Us</h3>
       <div>
         <label htmlFor="name">Name</label>
         <input id="name" ref={nameValue}></input>

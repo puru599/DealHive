@@ -8,9 +8,15 @@ const CartContext = React.createContext({
   products: [],
   token: null,
   isLoggedIn: false,
-  login: (token) =>{},
-  logout: () =>{},
-  email: null
+  login: (token) => {},
+  logout: () => {},
+  email: null,
+  numberOfItems: (value) => {},
+  value: 0,
+  cartPrice: (val) => {},
+  valuePrice: 0,
+  cartArrayFunction: (items) => {},
+  cartArray: [],
 });
 
 export default CartContext;

@@ -1,0 +1,24 @@
+.Contact {
+  margin: 3rem auto;
+  width: 95%;
+  max-width: 25rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 20%);
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  top: 10vh;
+  position: relative;
+  background-color: #fff;
+}
+
+.Contact div {
+  display: flex;
+  flex-direction: column;
+  font-weight: 100;
+}
+.Contact input {
+  margin: 3px;
+}

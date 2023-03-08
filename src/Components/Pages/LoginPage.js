@@ -7,28 +7,28 @@ const LoginPage = () => {
   const emailInput = useRef("");
   const passwordInput = useRef("");
   const history = useHistory("");
-  const cartCtx = useContext(CartContext);
+  const useCtx = useContext(CartContext);
   const loginSubmitHandler = async (event) => {
     event.preventDefault();
     const response = await fetch(
-      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBcOYKpZHbPe7QBWAhibHizoi6qcffUYZI",
+      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA44FDI677A07gl8waK8TuqqkK1MhV7_cg",
       {
         method: "POST",
         body: JSON.stringify({
           email: emailInput.current.value,
           password: passwordInput.current.value,
-          returnSecureToken: true,
+          returnSecureToken: true
         }),
         headers: {
-          "Content-Type": "application/json",
-        },
+          "Content-Type": "application/json"
+        }
       }
     );
     if (response.ok) {
       const data = await response.json();
       const regex = /[.@]/g;
       const mailId = data.email.replace(regex, "");
-      cartCtx.login(data.idToken, mailId);
+      useCtx.login(data.idToken, mailId);
       history.replace("/store");
     } else {
       const data = await response.json();
@@ -49,7 +49,6 @@ const LoginPage = () => {
         </div>
         <div className={classes.actions}>
           <button>Login</button>
-          {/* {!loading ? <button>Login</button> : <span>Sending Request...</span>} */}
         </div>
       </form>
     </section>

@@ -9,43 +9,43 @@ const productsArr = [
     id: "Colors",
     title: "Colors",
     price: 100,
-    quanitiy: 1,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-    imageUrl2: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-    to: "Colors",
+    imageUrl2:
+      "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+    to: "Colors"
   },
   {
     id: "Black and white Colors",
     title: "Black and white Colors",
     price: 50,
-    quanitiy: 1,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-    imageUrl2: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-    to: "Black and white Colors",
+    imageUrl2:
+      "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+    to: "Black and white Colors"
   },
   {
     id: "Yellow and Black Colors",
     title: "Yellow and Black Colors",
     price: 70,
-    quanitiy: 1,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-    imageUrl2: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-    to: "Yellow and Black Colors",
+    imageUrl2:
+      "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+    to: "Yellow and Black Colors"
   },
   {
     id: "Blue Color",
     title: "Blue Color",
     price: 100,
-    quanitiy: 1,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
-    imageUrl2: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-    to: "Blue Color",
-  },
+    imageUrl2:
+      "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+    to: "Blue Color"
+  }
 ];
 
 const Products = () => {
   const useCtx = useContext(CartContext);
-  useCtx.products = productsArr
+  useCtx.products = productsArr;
 
   const productList = productsArr.map((product) => (
     <ProductItems

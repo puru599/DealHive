@@ -1,6 +1,7 @@
+import classes from './About.module.css'
 const About = () => {
   return (
-    <div>
+    <div className={classes.About}>
       <h1>About</h1>
       <p>
         Lorem ipsum carrots enhanced rebates. Excellent sayings of a man of

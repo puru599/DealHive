@@ -1,0 +1,36 @@
+.ProductItems img {
+  border-radius: 10px;
+  width: 200px;
+}
+
+.ProductItems form {
+  margin: 50px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ProductItems {
+  list-style: none;
+}
+
+.ProductItems h2,
+h3 {
+  text-align: center;
+  font-weight: 100;
+}
+
+.ProductItems button {
+  background-color: rgb(69, 69, 252);
+  color: rgb(255, 255, 255);
+  margin: 2px;
+  border-color: transparent;
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: large;
+}
+.ProductItems button:hover {
+  background-color: rgb(235, 234, 234);
+  color: rgb(69, 69, 252);
+}

@@ -9,6 +9,12 @@ const defaultCartState = {
   login: (token) => {},
   logout: () => {},
   email: null,
+  numberOfItems: (value) => {},
+  value: 0,
+  cartPrice: (val) => {},
+  valuePrice: 0,
+  cartArrayFunction: (items) => {},
+  cartArray: []
 };
 
 const cartReducer = (state, action) => {
@@ -19,22 +25,23 @@ const cartReducer = (state, action) => {
     const existingItemIndex = state.items.findIndex((item) => {
       return action.item.id === item.id;
     });
+
     const existingItem = state.items[existingItemIndex];
     let updateItems;
+
     if (existingItem) {
       const updateItem = {
         ...existingItem,
-        amount: existingItem.amount + action.item.amount,
+        amount: existingItem.amount + action.item.amount
       };
       updateItems = [...state.items];
       updateItems[existingItemIndex] = updateItem;
     } else {
       updateItems = state.items.concat(action.item);
     }
-
     return {
       items: updateItems,
-      totalAmount: updateTotalAmount,
+      totalAmount: updateTotalAmount
     };
   }
 
@@ -42,9 +49,11 @@ const cartReducer = (state, action) => {
     const existingItemIndex = state.items.findIndex(
       (item) => action.id === item.id
     );
+
     const existingItem = state.items[existingItemIndex];
     const updatedTotalAmount = state.totalAmount - existingItem.price;
     let updatedItems;
+
     if (existingItem.amount === 1) {
       updatedItems = state.items.filter((item) => item.id !== action.id);
     } else {
@@ -54,7 +63,7 @@ const cartReducer = (state, action) => {
     }
     return {
       items: updatedItems,
-      totalAmount: updatedTotalAmount,
+      totalAmount: updatedTotalAmount
     };
   }
 
@@ -74,22 +83,39 @@ const ContextProvider = (props) => {
   const removeItemFromCart = (id) => {
     dispatchCartAction({ type: "REMOVE", id: id });
   };
-  const loginState = localStorage.getItem("loginKey");
-  const emailState = localStorage.getItem("email");
+  const loginState = sessionStorage.getItem("loginKey");
+  const emailState = sessionStorage.getItem("email");
   const [token, setToken] = useState(loginState);
   const [email, setEmail] = useState(emailState);
+  const [value, setValue] = useState(null);
+  const [valuePrice, setValuePrice] = useState(null);
+  const [cartArray, setCartArray] = useState([]);
   const isLoggedInHandler = !!token;
+  
   const loginHandler = (token, email) => {
     setToken(token);
     setEmail(email);
-    localStorage.setItem("loginKey", token);
-    localStorage.setItem("email", email);
+    sessionStorage.setItem("loginKey", token);
+    sessionStorage.setItem("email", email);
   };
+
   const logoutHandler = () => {
     setToken(null);
     setEmail(null);
-    localStorage.removeItem("loginKey");
-    localStorage.removeItem("email");
+    sessionStorage.removeItem("loginKey");
+    sessionStorage.removeItem("email");
+  };
+
+  const numberOfItemsHandler = (number) => {
+    setValue(number);
+  };
+
+  const cartPriceHandler = (num) => {
+    setValuePrice(num);
+  };
+
+  const cartArrayFunctionHandler = (items) => {
+    setCartArray(items);
   };
 
   const cartContext = {
@@ -102,6 +128,12 @@ const ContextProvider = (props) => {
     login: loginHandler,
     logout: logoutHandler,
     email: email,
+    numberOfItems: numberOfItemsHandler,
+    value: value,
+    cartPrice: cartPriceHandler,
+    valuePrice: valuePrice,
+    cartArrayFunction: cartArrayFunctionHandler,
+    cartArray: cartArray
   };
 
   return (
@@ -112,3 +144,4 @@ const ContextProvider = (props) => {
 };
 
 export default ContextProvider;
+

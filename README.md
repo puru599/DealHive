@@ -15,13 +15,6 @@ The E-commerce web application provides the following features:
 - Users can checkout and make payments through the cart
 - The application uses Firebase to store and manage data for the products and users
 
-## Installation
-To run the application, clone the repository to your local machine and run npm install to install the necessary dependencies.
-Finally, run npm start to start the server and launch the application in your browser.
-
-## Contributing
-If you wish to contribute to this project, feel free to submit a pull request or create an issue. All contributions are welcome and appreciated!
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -92,3 +85,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Contributing
+If you wish to contribute to this project, feel free to submit a pull request or create an issue. All contributions are welcome and appreciated!

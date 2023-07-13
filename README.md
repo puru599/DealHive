@@ -1,4 +1,4 @@
-# SHOP HUB
+# DEALHIVE
 ![Image alt text](https://raw.githubusercontent.com/SHA43F/Assets/main/E-Commerce.jpg "E-Commerce")
 
 ## Demo [Experience the excitement in real-time by jumping into our live page!](https://e-commerce-84551.firebaseapp.com/)
